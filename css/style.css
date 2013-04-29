@@ -1,0 +1,219 @@
+/* 
+    Document   : style
+    Created on : 4-ott-2012, 9.27.07
+    Author     : Dario
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+
+body {
+    background: url(../img/diamond_upholstery.png) fixed;
+    font-family: 'Scada', sans-serif;
+    color: #333;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    line-height: 1.5em;
+    font-family: 'Duru Sans', sans-serif;
+}
+
+#myPagesList ul {
+    list-style: none;
+    margin: 0px;
+}
+
+#header{
+    text-align: center;
+    color: #4f85bb;
+
+}
+
+.couponImgContainer {
+    text-align: center;
+}
+
+#offersContainer img {
+    margin: 10px;
+
+}
+
+.item {
+    width: 260px;
+    padding: 20px;
+    margin-left: 28px;
+    margin-bottom: 10px;
+
+
+    border: 1px solid #e5e5e5;
+
+    color: #333;
+
+
+
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+
+    -webkit-box-shadow:  0px 0px 7px 0px rgba(5, 5, 5, 0.4);
+
+    box-shadow:  0px 0px 7px 0px rgba(5, 5, 5, 0.4);
+
+
+    /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjYwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIwLjk0Ii8+CiAgICA8c3RvcCBvZmZzZXQ9IjYxJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIwLjkzIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlZGVkZWQiIHN0b3Atb3BhY2l0eT0iMC43MSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+    background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(255,255,255,0.94) 60%, rgba(255,255,255,0.93) 61%, rgba(237,237,237,0.71) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(60%,rgba(255,255,255,0.94)), color-stop(61%,rgba(255,255,255,0.93)), color-stop(100%,rgba(237,237,237,0.71))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(255,255,255,0.94) 60%,rgba(255,255,255,0.93) 61%,rgba(237,237,237,0.71) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(255,255,255,0.94) 60%,rgba(255,255,255,0.93) 61%,rgba(237,237,237,0.71) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(255,255,255,0.94) 60%,rgba(255,255,255,0.93) 61%,rgba(237,237,237,0.71) 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(255,255,255,0.94) 60%,rgba(255,255,255,0.93) 61%,rgba(237,237,237,0.71) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#b5ededed',GradientType=0 ); /* IE6-8 */
+
+}
+
+
+
+#userStats p{
+    font-size: 12px;
+   border: 1px lightgray solid;
+   padding: 5px;
+}
+
+
+#userStats_s {
+
+    margin: 5px;
+    padding: 5px;
+
+    font-size: 11px;
+
+
+    -webkit-border-radius: 5px 5px 0px 0px;
+    border-radius: 5px 5px 0px 0px;
+
+
+    -webkit-box-shadow:  0px 0px 5px 1px rgba(0, 0, 0, 0.3);
+
+    box-shadow:  0px 0px 5px 1px rgba(0, 0, 0, 0.3);
+
+    padding-left: 10px;
+    padding-right: 10px;
+
+    margin-bottom: 15px;
+
+-webkit-box-shadow:  1px 1px 5px 1px rgba(12, 12, 12, 0.4);
+        
+        box-shadow:  1px 1px 5px 1px rgba(12, 12, 12, 0.4);
+    
+}
+
+.userPrifilePhoto {
+    width: 81px;
+    margin-left: 3px;
+    
+    border: 4px solid whitesmoke;
+    
+-webkit-border-radius: 5px 5px 0px 0px;
+        border-radius: 5px 5px 0px 0px;
+        
+}
+
+
+#userStats span.totalOffers{
+    font-size: 9px;
+}
+
+#userStats ul {
+    list-style: none;
+    margin: 0px;
+}
+
+
+#myPagesList ul li {
+    display: block;
+    margin: 5px;
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 5px;
+}
+
+span.totalOffers {
+    font-weight: bolder;
+    font-size: 11px;
+    color: lightslategrey;
+    float: right;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.item_old {
+    width: 200px;
+    margin: 10px;
+    float: left;
+    padding: 10px;
+    border: 1px solid #e5ebee;
+
+    font-family: 'Helvetica', sans-serif;
+
+    color: #333;
+
+    -webkit-border-radius: 15px;    
+    border-radius: 15px;
+
+    -webkit-border-radius: 15px;    
+    border-radius: 15px;
+
+    -webkit-box-shadow:  1px 1px 4px 1px rgba(0, 0, 0, 0.5);
+    box-shadow:  1px 1px 4px 1px rgba(0, 0, 0, 0.5);
+
+
+    background: rgb(255,255,255); /* Old browsers */
+    /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlNWU1ZTUiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+    background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(229,229,229,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(229,229,229,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 ); /* IE6-8 */
+
+
+}
+
+.terms {
+    word-break: break-all;
+}
+
+.owner_name {
+    font-size: 18px;
+}
+
+.couponCode {
+    font-weight: bolder;
+}
+
+#loading{
+    display: none;
+
+    margin: 50px auto;
+    width: 128px;
+    height: 128px;
+}
+
+.footer {
+    color: #4f85bb;
+    text-align: center;
+}

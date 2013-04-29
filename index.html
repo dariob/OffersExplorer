@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title></title>
+
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <!-- Le styles -->
+        <link href="css/bootstrap.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+        <style type="text/css">
+            /*            body {
+                            padding-top: 60px;
+                            padding-bottom: 40px;
+                        }
+                        .sidebar-nav {
+                            padding: 9px 0;
+                        }*/
+        </style>
+        <link href="css/bootstrap-responsive.css" rel="stylesheet">
+        <link href="css/isotope.css" rel="stylesheet">
+
+        <link href='http://fonts.googleapis.com/css?family=Duru+Sans|Scada' rel='stylesheet' type='text/css'>
+
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+          <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+        <!--[if gte IE 9]>
+          <style type="text/css">
+            .gradient {
+               filter: none;
+            }
+          </style>
+        <![endif]-->
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script src="js/knockout-2.1.0.js"></script>
+        <script src="js/knockout.mapping-latest.debug.js"></script>
+        <script src="js/jquery.isotope.js"></script>
+        <script src="js/jquery.timeago.js"></script>
+
+
+    </head>
+    <body>
+        <div id="fb-root"></div>
+        <script>
+            window.fbAsyncInit = function() {
+                FB.init({
+                    appId: '144289115668589', // App ID
+                    channelUrl: '//localhost/exploreoffers/channel.html', // Channel File
+                    status: true, // check login status
+                    cookie: true, // enable cookies to allow the server to access the session
+                    xfbml: true  // parse XFBML
+                });
+
+                // Additional initialization code here
+                FB.getLoginStatus(function(response) {
+                    // this will be called when the roundtrip to Facebook has completed
+                    FB.api('me', function(r) {
+                        r.profilePicture = '//graph.facebook.com/'+r.id+'/picture?type=normal'
+                        viewModel.user(r);
+                        console.log("get login statur", r);
+                        if (r.name) {
+                            scanOffers();
+                            jQuery("#loginPanel").fadeOut();
+                        }
+
+                    });
+                    
+                }, true);
+
+            };
+
+            // Load the SDK Asynchronously
+            (function(d) {
+                var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+                if (d.getElementById(id)) {
+                    return;
+                }
+                js = d.createElement('script');
+                js.id = id;
+                js.async = true;
+                js.src = "//connect.facebook.net/en_US/all.js";
+                ref.parentNode.insertBefore(js, ref);
+            }(document));
+        </script>
+
+        <div id="header">
+            <h1>Explore Offers</h1>
+
+        </div>
+
+
+        <div id="loginPanel">
+            <fb:login-button size="small" scope="user_likes" onlogin="scanOffers()">
+                Connect to discover offers from Facebook Pages that you like
+            </fb:login-button>
+
+
+        </div>
+
+        <div id="loading">
+            <img src="img/loading.gif" />
+        </div>
+
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span2">
+                    <div class="row-fluid">
+                        <div id="userStats" class="span6">
+                            <p>Hello <span data-bind="text: user().first_name"></span>. 
+                                You likes <span class="" data-bind="text: likes().length"></span> pages 
+                                and <span class="" data-bind="text: pages().length"></span>
+                                of these have <span class="" data-bind="text: offers().length"></span> offers for you.
+                            </p>
+                            <div>
+
+                            </div>
+                        </div>
+                        <div class="span6 userProfilePict"  >
+                            <img class="userPrifilePhoto" data-bind="attr: {src: user().profilePicture}" />
+                        </div>
+                    </div>
+
+
+                    <div id="myPagesList">
+                        <ul data-bind="foreach: pages">
+                            <li><a href="#" data-bind="attr: {'data-filter':page_id}"><span data-bind="text: name"></span> <span data-bind="text: totalOffers" class="totalOffers"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="span10">
+
+                    <div class="row-fluid">
+                        <div class="span6">
+                            <div class="btn-toolbar">
+                                <div class="btn-group">
+                                    <a href="#" class="btn" data-bind="click: filterActiveOffers"><i class="icon-tags "></i> Active Offers</a>
+                                    <a href="#" class="btn" data-bind="click: filterExpiredOffers"><i class="icon-book"></i> Expired</a>
+
+                                </div>
+                                <div class="btn-group">
+                                    <a href="#" class="btn btn-inverse disabled"><i class="icon-white icon-trash"></i></a> 
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="span6">
+                            <div class="btn-group">
+                                <div class="offersInfo  btn disabled pull-right">
+                                    Showing <span data-bind="text: totalOfferShow"></span> offers
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+
+
+
+                    <div id="offersContainer" data-bind="foreach: offers">
+                        <div class="item" data-bind="attr:{id:id, class:'item '+owner_id+' '+expired}">
+                            <div class="topItem">
+                                <div class="from">                               
+                                    <a target="_blank" data-bind="attr:{href:from.page_url, title:from.name}">                                   
+                                        <img data-bind="attr: {src:from.pic_square, alt:from.name, title:from.name}" />
+                                        <span data-bind="text: from.name" class="owner_name"></span>
+                                    </a>
+
+                                </div>
+                                <h4 data-bind="text: title"></h4>
+                            </div>
+                            <div class="bodyItem">
+                                <div class="couponImgContainer">
+                                    <img data-bind="attr: {src:image_url, title:title, alt:title}" />
+                                </div>
+                                <p class="terms" data-bind="text: terms"></p>
+                            </div>
+                            <div class="footerItem">
+                                <a class="btn btn-success" data-bind="click: $parent.offerDetailView">Guarda</a>
+                                <hr>
+                                <a target="_blank" data-bind="attr:{href:redemption_link}">Redemption link</a>                            
+                                <p data-bind="if: redemption_code">
+                                    Coupon code: <span class="couponCode" data-bind="text:redemption_code"></span>
+                                </p>
+
+
+                                <hr>
+
+                                <div class="details">
+                                    <div data-bind="if: claim_limit > 0">
+                                        <span>Coupons available: </span>
+                                        <span data-bind="text:claim_limit"></span>
+                                    </div>
+                                    expiry:
+                                    <time class="timeago" data-bind="text: endTimeHuman, attr:{datetime:endTime}"></time>
+                                    <!--<span data-bind="text: coupon_type"></span>-->
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div> 
+            </div>
+        </div>
+
+
+
+
+
+
+
+        <div class="footer">
+            <small>handmade by <a href="http://fb.com/dario.barila" target="_blank">Dario Barilà</a></small>
+        </div>
+
+
+
+
+
+
+
+
+        <div data-bind="if: offerDetailView">
+            <div   data-bind="template:{with: offerDetailView} ">
+                <div class="item_" data-bind="attr:{id:id, class:'item '+owner_id+' '+expired}">
+                    <div class="topItem">
+                        <div class="from">                               
+                            <a target="_blank" data-bind="attr:{href:from.page_url, title:from.name}">                                   
+                                <img data-bind="attr: {src:from.pic_square, alt:from.name, title:from.name}" />
+                                <span data-bind="text: from.name" class="owner_name"></span>
+                            </a>
+
+                        </div>
+                        <h4 data-bind="text: title"></h4>
+                    </div>
+                    <div class="bodyItem">
+                        <div class="couponImgContainer">
+                            <img data-bind="attr: {src:image_url, title:title, alt:title}" />
+                        </div>
+                        <p class="terms" data-bind="text: terms"></p>
+                    </div>
+                    <div class="footerItem">
+                        <hr>
+                        <a target="_blank" data-bind="attr:{href:redemption_link}">Redemption link</a>                            
+                        <p data-bind="if: redemption_code">
+                            Coupon code: <span class="couponCode" data-bind="text:redemption_code"></span>
+                        </p>
+
+
+                        <hr>
+
+                        <div class="details">
+                            <div data-bind="if: claim_limit > 0">
+                                <span>Coupons available: </span>
+                                <span data-bind="text:claim_limit"></span>
+                            </div>
+                            expiry:
+                            <time class="timeago" data-bind="text: endTimeHuman, attr:{datetime:endTime}"></time>
+                            <!--<span data-bind="text: coupon_type"></span>-->
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>  
+        </div>
+
+
+
+
+
+        <script>
+            jQuery(function() {
+                $('div#myPagesList a').live('click',function(){
+                    
+                    var selector = $(this).attr('data-filter');
+                    console.log(selector,"selector ")
+                    jQuery("#offersContainer").isotope({ filter: '.'+selector });
+                    return false;
+                });
+            });
+            
+            
+            
+           
+        </script>
+
+
+
+        <script src="js/app/utils.js"></script>
+        <script src="js/app/offers.js"></script>
+        <script src="js/app/viewModel.js"></script>
+    </body>
+</html>
